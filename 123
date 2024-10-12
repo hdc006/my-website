@@ -1,0 +1,448 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工废料废具体数据</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<link rel="stylesheet" href="css/comon0.css">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示时间</title>
+    <style>
+        #showTime {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: transparent; /* 设为透明 */;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: Arial, sans-serif; /* 可选的字体设置 */
+			font-size: 20px; /* 可调字体大小 */
+            z-index: 1000; /* 确保在其他内容之上 */
+        }
+    </style>
+</head>
+<body>
+<div class="loading">
+  <div class="loadbox"> <img src="images/loading.gif"> 页面加载中... </div>
+</div>
+	<div class="time" id="showTime">2019年12月05日16时16分54秒</div>
+	<script>
+		var t = null;
+		t = setTimeout(time, 1000);//開始运行
+		function time() {
+			clearTimeout(t);//清除定时器
+			dt = new Date();
+			var y = dt.getFullYear();
+			var mt = dt.getMonth() + 1;
+			var day = dt.getDate();
+			var h = dt.getHours();//获取时
+			var m = dt.getMinutes();//获取分
+			var s = dt.getSeconds();//获取秒
+			var t = null;
+			document.getElementById("showTime").innerHTML = y + "年" + Appendzero(mt) + "月" + Appendzero(day) + "日" + Appendzero(h) + "时" + Appendzero(m) + "分" + Appendzero(s) + "秒";
+			function Appendzero(obj) {
+				if (obj < 10) return "0" + "" + obj;
+				else return obj;
+			}
+			t = setTimeout(time, 1000); //设定定时器，循环运行     
+		}
+	</script>
+</div>
+<div class="head">
+  <h1>工废料废三级可视化</a></h1>
+</div>
+<div class="mainbox">
+  <ul class="clearfix">
+    <li>
+      <div class="boxall" style="height:calc(33.3333% - .25rem)">
+        <div class="tit01">日度数据</div>
+		  <div class="boxnav nav01" id="echart1"></div>
+        <div class="boxfoot"></div>
+      </div>
+		<div  style="height:calc(33.3333% - .25rem); margin-bottom: .25rem;">
+		
+		    <div class="boxall" style="height: 100%; width:calc(50% - .08rem); float: left;">
+        <div class="tit01">周度数据</div>
+ <div class="boxnav nav01" id="echart2"></div>
+        <div class="boxfoot"></div>
+      </div>
+			
+			 <div class="boxall" style="height: 100%; width:calc(50% - .08rem); float: right;">
+        <div class="tit01">周度合计</div>
+ <div class="boxnav nav01" style="display: flex; align-items: center;">
+				 <p class="p2"><span class="counter">19</span>/<span class="counter">25</span></p>
+				 </div>
+        <div class="boxfoot"></div>
+      </div>
+	  </div>
+      <div class="boxall" style="height:calc(33.3333% - .25rem)">
+        <div class="tit01">月度数据</div>
+         <div class="boxnav nav01" id="echart3"></div>
+        <div class="boxfoot"></div>
+      </div>
+    </li>
+    <li>
+      
+      <div class="boxall" style="height:calc(33.33333% - .25rem)">
+        <div class="tit02">周度计划</div>
+        <div class="boxnav nav02">
+		  	<div>
+				<p class="p1">完成/计划</p>
+			<p class="p2"><span class="counter">15633</span>/<span class="counter">18935</span></p>
+			<p class="p3">
+				<span><i class="dot dot1"></i>未完成：523件</span>
+				<span><i class="dot dot2"></i>完成率：92.9%</span>
+			</p></div>
+		  </div>
+        <div class="boxfoot"></div>
+      </div>
+		<div class="boxall"  style="height:calc(66.666666% - .25rem)">
+        <div class="tit03">详细数据</div>
+			 <div class="boxnav nav03">
+				 
+				 <div class="listhead listhead1">
+				  <span>生产线</span>
+					  <span>总产量</span>
+					  <span>工废数</span>
+					  <span>工废数YTD</span>
+					  <span>料废数</span>
+					  <span>料废数YTD</span>
+				 </div>
+				 <div class="listnav listnav1 scrollDiv">
+				 <ul>
+					 <li> <span>EDU_Case</span> <span>2658</span> <span>2658</span> <span>26558</span> <span>2658</span> <span>5658</span></li>
+					 <li><span>EDU_Housing</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>7658</span></li>
+					 <li> <span>CSSⅡ_CB</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>7658</span></li>
+					 <li> <span>CSSⅡ_CH</span> <span>233</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>4658</span></li>
+					 <li> <span>CSSⅡ_CS</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>2658</span></li>
+					 <li> <span>CSSⅣ_CB</span> <span>233</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>3658</span></li>
+					 <li> <span>CSSⅣ_CH</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>4658</span></li>
+					 <li> <span>CSSⅣ_CS</span> <span>233</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>5658</span></li>
+					 <li> <span>NGC_CB</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>3658</span></li>
+					 <li> <span>NGC_CH</span> <span>233</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>4658</span></li>
+					 <li> <span>NGC_CS</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>3658</span></li>
+					 <li> <span>SGE_CB</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>4658</span></li>
+					 <li> <span>SGE_CH</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>5658</span></li>
+					 <li> <span>SGE_CS</span> <span>334</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>6658</span></li>
+					 <li> <span>CVG_CB</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>3658</span></li>
+					 <li> <span>CVG_CH</span> <span>234</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>4658</span></li>
+					 <li> <span>CVG_CS</span> <span>254</span> <span>2334</span> <span>2334</span> <span>2334</span> <span>3658</span></li>
+					 </ul>
+				 </div>
+				 
+			
+			</div>
+        <div class="boxfoot"></div>
+      </div>
+    </li>
+    <li>
+      <div class="boxall"   style="height:calc(100% - .25rem); padding: 0;">
+        <div class="tit04">详细数据</div>
+ <div class="boxnav nav04">
+	 
+	  <div class="listhead listhead2">        
+				  <span>工位号</span>
+					  <span>SAA</span>
+					  <span>原因分析</span>
+					 
+				 </div>
+	 
+		  <div class="listnav listnav2 scrollDiv">
+						  
+						  <ul class="smjl">
+			<li>               
+				    <span>CSSⅡ_CB_OP40B</span>
+					<span class="text-red">87%</span>
+					<span> 存在换型无法达标</span>
+			</li>
+				<li>               
+					<span>CSSⅡ_CB_OP50</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>			
+				<li>               
+					<span>CSSⅡ_CB_OP140B</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+				    <span>CSSⅣ_CH_OP100</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅣ_CH_OP110</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+			 	<li>               
+					<span>CSSⅣ_CS_OP110A</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅣ_CS_OP110C</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅣ_CS_OP105</span>
+					<span class="text-red">78%</span>
+					<span> 设备投料不足 </span>							  
+			</li>
+				<li>               
+					<span>CSSⅡ_CB_OP40</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅡ_CB_OP50</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅡ_CB_OP140</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅡ_CH_OP70</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅡ_CH_OP1701</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>CSSⅡ_CH_OP1702</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>CSSⅡ_CS_OP85</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CSSⅡ_CS_OP160B</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>CSSⅡ_CS_OP80</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>NGCⅢ_CB_OP70A</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>NGCⅢ__CB_OP70B</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>NGCⅢ__CB_OP80</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>NGCⅢ_CH_OP60B</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>NGCⅢ__CH_OP70</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>NGCⅢ__CH_OP80</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>NGCⅢ_CS_OP110A</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>NGCⅢ__CS_OP120</span>
+					<span class="text-red">98%</span>
+					<span> 产量提前完成 </span>
+			</li>
+				<li>               
+					<span>NGCⅢ__CS_OP235A</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>SGE_CB_OP50A</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>SGE__CB_OP160A</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>SGE__CB_OP170A</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>SGE_CH_OP130C</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>SGE__CH_OP210C</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>SGE__CH_OP220C</span>
+					<span class="text-red">89%</span>
+					<span> 皮带断裂 </span>	
+			</li>
+				<li>               
+					<span>SGE_CS_OP110B</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>SGE__CS_OP170</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>SGE__CS_OP230</span>
+					<span class="text-green">94%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>CVG_CB_OP60</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CVG__CB_OP140A</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CVG__CB_OP150</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>CVG_CH_OP70</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CVG__CH_OP140</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CVG__CH_OP180</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>CVG_CS_OP110A</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CVG__CS_OP110B</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>CVG__CS_OP160</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>	
+			</li>
+				<li>               
+					<span>EDU_Case_OP60</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>EDU__Case_OP50C1</span>
+					<span class="text-green">98%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>EDU__Case_OP50C2</span>
+					<span class="text-green">99%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>EDU_Housing_OP50</span>
+					<span class="text-green">97%</span>
+					<span> NA </span>
+			</li>
+				<li>               
+					<span>EDU__Housing_OP60</span>
+					<span class="text-red">78%</span>
+					<span> 零件程序传输故障 </span>
+																			  
+			</ul>
+						  </div>
+		  </div>
+        <div class="boxfoot"></div>
+      </div>
+
+    </li>
+  </ul>
+</div>
+
+
+<script type="text/javascript" src="js/echarts.min.js"></script> 
+<script src="js/jquery.liMarquee.js"></script> 
+<script language="JavaScript" src="js/js.js"></script> 
+<script type="text/javascript" src="js/jquery.countup.min.js"></script> 
+<script type="text/javascript" src="js/jquery.waypoints.min.js"></script> 
+<script type="text/javascript">
+$('.counter').countUp();
+
+$(function(){
+	$('.scrollDiv').liMarquee({
+		direction: 'up',//身上滚动 
+		runshort: false,//内容不足时不滚动
+		scrollamount: 20//速度
+	});
+});
+
+</script> 
+ 
+  <script src="js/countDown.js"></script>
+<script type="text/javascript">
+    $("input[name='countDown']").each(function () {
+        var time_end=this.value;
+        var con=$(this).next("span");
+        var _=this.dataset;
+        countDown(con,{
+            time_end:time_end//开始时间
+        })
+        //提供3个事件分别为:启动,重启,停止
+        .on("countDownStarted countDownRestarted  countDownEnded ",function (arguments) {
+            console.info(arguments);
+        });
+    });
+
+</script>
+</body>
+</html>
